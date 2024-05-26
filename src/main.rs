@@ -1,5 +1,8 @@
 mod time; 
 use time::Time;
+mod unit;
+use unit::{Length, Unit};
+
 
 fn main() {
     let time_in_seconds = Time::Seconds(1.0);
