@@ -6,6 +6,7 @@ pub trait Unit {
     fn symbol(&self) -> &str;
 }
 
+//PHYSICAL DIMENSIONS
 //Dimention::Length
 #[derive(Debug, Clone, Copy)]
 pub enum Length {
@@ -63,7 +64,6 @@ impl Unit for Length {
         }
     }
 }
-
 
 impl Length {
     pub fn to_meters(&self) -> f64 {
@@ -185,6 +185,117 @@ impl Length {
 }
 
 //Dimention: Area
+#[derive(Debug, Clone, Copy)]
+pub enum Area {
+    SquareMegameters(f64),
+    SquareKilometers(f64),
+    SquareMeters(f64),
+    SquareCentimeters(f64),
+    SquareMillimeters(f64),
+    SquareMicrometers(f64),
+    SquareNanometers(f64),
+    SquareInches(f64),
+    SquareFeet(f64),
+    SquareYards(f64),
+    SquareMiles(f64),
+    Acres(f64),
+    Ares(f64),
+    Hectares(f64),
+}
+
+impl Unit for Area {
+    fn symbol(&self) -> &str {
+        match *self {
+            Area::SquareMegameters(_) => "Mm²",
+            Area::SquareKilometers(_) => "km²",
+            Area::SquareMeters(_) => "m²",
+            Area::SquareCentimeters(_) => "cm²",
+            Area::SquareMillimeters(_) => "mm²",
+            Area::SquareMicrometers(_) => "µm²",
+            Area::SquareNanometers(_) => "nm²",
+            Area::SquareInches(_) => "in²",
+            Area::SquareFeet(_) => "ft²",
+            Area::SquareYards(_) => "yd²",
+            Area::SquareMiles(_) => "mi²",
+            Area::Acres(_) => "ac",
+            Area::Ares(_) => "a",
+            Area::Hectares(_) => "ha",
+        }
+    }
+}
+
+impl Area {
+    pub fn to_square_meters(&self) -> f64 {
+        match *self {
+            Area::SquareMegameters(value) => value * 1_000_000_000.0,
+            Area::SquareKilometers(value) => value * 1_000_000.0,
+            Area::SquareMeters(value) => value,
+            Area::SquareCentimeters(value) => value * 0.0001,
+            Area::SquareMillimeters(value) => value * 0.000001,
+            Area::SquareMicrometers(value) => value * 1e-12,
+            Area::SquareNanometers(value) => value * 1e-18,
+            Area::SquareInches(value) => value * 0.00064516,
+            Area::SquareFeet(value) => value * 0.092903,
+            Area::SquareYards(value) => value * 0.836127,
+            Area::SquareMiles(value) => value * 2.59e+6,
+            Area::Acres(value) => value * 4046.86,
+            Area::Ares(value) => value * 100.0,
+            Area::Hectares(value) => value * 10_000.0,
+        }
+    }
+
+    pub fn to_square_megameters(&self) -> f64 {
+        self.to_square_meters() / 1_000_000_000.0
+    }
+
+    pub fn to_square_kilometers(&self) -> f64 {
+        self.to_square_meters() / 1_000_000.0
+    }
+
+    pub fn to_square_centimeters(&self) -> f64 {
+        self.to_square_meters() * 0.0001
+    }
+
+    pub fn to_square_millimeters(&self) -> f64 {
+        self.to_square_meters() * 0.000001
+    }
+
+    pub fn to_square_micrometers(&self) -> f64 {
+        self.to_square_meters() * 1e-12
+    }
+
+    pub fn to_square_nanometers(&self) -> f64 {
+        self.to_square_meters() * 1e-18
+    }
+
+    pub fn to_square_inches(&self) -> f64 {
+        self.to_square_meters() / 0.00064516
+    }
+
+    pub fn to_square_feet(&self) -> f64 {
+        self.to_square_meters() / 0.092903
+    }
+
+    pub fn to_square_yards(&self) -> f64 {
+        self.to_square_meters() / 0.836127
+    }
+    
+    pub fn to_square_miles(&self) -> f64 {
+        self.to_square_meters() / 2.59e+6
+    }
+
+    pub fn to_acres(&self) -> f64 {
+        self.to_square_meters() / 4046.86
+    }
+
+    pub fn to_ares(&self) -> f64 {
+        self.to_square_meters() / 100.0
+    }
+
+    pub fn to_hectares(&self) -> f64 {
+        self.to_square_meters() / 10_000.0
+    }
+}
 
 
 //OPERATIONS:
