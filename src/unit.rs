@@ -317,3 +317,18 @@ impl Sub for Length {
     }
 }
 
+impl Mul for Length {
+    type Output = Area;
+
+    fn mul(self, other: Length) -> Area {
+        Area::SquareMeters(self.to_meters() * other.to_meters())
+    }
+}
+
+impl Div for Length {
+    type Output = f64;
+
+    fn div(self, other: Length) -> f64 {
+        self.to_meters() / other.to_meters()
+    }
+}
