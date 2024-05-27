@@ -1,3 +1,12 @@
 #UnitSystem todo list
 
 - [] Manually Check all conversion factors 
+- [] length and AREA in the same file is a bit confusing. seperate into 2 files, but with layered files:
+   |
+   -- Length 
+        |
+        --- Area
+        |
+        --- Volume
+   -- ...
+   

@@ -1,3 +1,5 @@
+use std::fmt;
+
 // Define a trait for a generic unit of measure
 use std::ops::{Add, Sub, Mul, Div};
 
@@ -330,5 +332,58 @@ impl Div for Length {
 
     fn div(self, other: Length) -> f64 {
         self.to_meters() / other.to_meters()
+    }
+}
+
+// Implement the Display trait for Length to define how it should be formatted when printed.
+impl fmt::Display for Length {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Length::Megameters(value) => write!(f, "{} megameters", value),
+            Length::Kilometers(value) => write!(f, "{} kilometers", value),
+            Length::Hectometers(value) => write!(f, "{} hectometers", value),
+            Length::Decameters(value) => write!(f, "{} decameters", value),
+            Length::Meters(value) => write!(f, "{} meters", value),
+            Length::Decimeters(value) => write!(f, "{} decimeters", value),
+            Length::Centimeters(value) => write!(f, "{} centimeters", value),
+            Length::Millimeters(value) => write!(f, "{} millimeters", value),
+            Length::Micrometers(value) => write!(f, "{} micrometers", value),
+            Length::Nanometers(value) => write!(f, "{} nanometers", value),
+            Length::Picometers(value) => write!(f, "{} picometers", value),
+            Length::Angstroms(value) => write!(f, "{} angstroms", value),
+            Length::Inches(value) => write!(f, "{} inches", value),
+            Length::Feet(value) => write!(f, "{} feet", value),
+            Length::Yards(value) => write!(f, "{} yards", value),
+            Length::Miles(value) => write!(f, "{} miles", value),
+            Length::ScandinavianMiles(value) => write!(f, "{} scandinavian miles", value),
+            Length::LightYears(value) => write!(f, "{} light years", value),
+            Length::NauticalMiles(value) => write!(f, "{} nautical miles", value),
+            Length::Fathoms(value) => write!(f, "{} fathoms", value),
+            Length::Furlongs(value) => write!(f, "{} furlongs", value),
+            Length::AstronomicalUnits(value) => write!(f, "{} astronomical units", value),
+            Length::Parsecs(value) => write!(f, "{} parsecs", value),
+        }
+    }
+}
+
+// Implement the Display trait for Area to define how it should be formatted when printed.
+impl fmt::Display for Area {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Area::SquareMegameters(value) => write!(f, "{} square megameters", value),
+            Area::SquareKilometers(value) => write!(f, "{} square kilometers", value),
+            Area::SquareMeters(value) => write!(f, "{} square meters", value),
+            Area::SquareCentimeters(value) => write!(f, "{} square centimeters", value),
+            Area::SquareMillimeters(value) => write!(f, "{} square millimeters", value),
+            Area::SquareMicrometers(value) => write!(f, "{} square micrometers", value),
+            Area::SquareNanometers(value) => write!(f, "{} square nanometers", value),
+            Area::SquareInches(value) => write!(f, "{} square inches", value),
+            Area::SquareFeet(value) => write!(f, "{} square feet", value),
+            Area::SquareYards(value) => write!(f, "{} square yards", value),
+            Area::SquareMiles(value) => write!(f, "{} square miles", value),
+            Area::Acres(value) => write!(f, "{} acres", value),
+            Area::Ares(value) => write!(f, "{} ares", value),
+            Area::Hectares(value) => write!(f, "{} hectares", value),
+        }
     }
 }
