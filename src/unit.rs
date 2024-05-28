@@ -2,7 +2,6 @@ use std::fmt;
 use std::ops::{Add, Sub, Mul, Div};
 
 //////////////PHYSICAL DIMENSIONS/////////////////////
-
 //Dimension::Length
 #[derive(Clone, Copy)]
 pub enum Length {
@@ -403,7 +402,6 @@ impl fmt::Display for Volume {
 }
 
 //OPERATIONS:
-
 // Implement Add trait
 impl Add<Length> for Length {
     type Output = Length;
