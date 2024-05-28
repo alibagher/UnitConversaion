@@ -9,7 +9,7 @@ pub enum Time {
 }
 
 impl Time {
-    pub fn in_seconds(&self) -> f64 {
+    pub fn to_seconds(&self) -> f64 {
         match self {
             Time::Seconds(seconds) => *seconds,
             Time::Min(minutes) => minutes * 60.0,
@@ -18,15 +18,26 @@ impl Time {
         }
     }
 
-    // Method to convert seconds to the same variant as self.
-    pub fn from_seconds(&self, total_seconds: f64) -> Self {
-        match self {
-            Time::Seconds(_) => Time::Seconds(total_seconds),
-            Time::Min(_) => Time::Min(total_seconds / 60.0),
-            Time::Hour(_) => Time::Hour(total_seconds / 3600.0),
-            Time::Day(_) => Time::Day(total_seconds / 86400.0),
-        }
+    pub fn to_min(&self) -> f64 {
+      self.to_seconds() / 60.0
     }
+
+    pub fn to_hour(&self) -> f64 {
+      self.to_seconds() / 3600.0
+    }
+
+    pub fn to_day(&self) -> f64 {
+      self.to_seconds() / 86400.0
+    }
+    // // Method to convert seconds to the same variant as self.
+    // pub fn from_seconds(&self, total_seconds: f64) -> Self {
+    //     match self {
+    //         Time::Seconds(_) => Time::Seconds(total_seconds),
+    //         Time::Min(_) => Time::Min(total_seconds / 60.0),
+    //         Time::Hour(_) => Time::Hour(total_seconds / 3600.0),
+    //         Time::Day(_) => Time::Day(total_seconds / 86400.0),
+    //     }
+    // }
 }
 
 // Implement the Add trait for Time.
@@ -36,8 +47,7 @@ impl Add for Time {
     // TODO: Instead of returning in SECONDS, return in the version of the self. 
 
     fn add(self, other: Time) -> Time {
-        let total_seconds = self.in_seconds() + other.in_seconds();
-        Time::from_seconds(&self, total_seconds)
+        Time::Seconds(self.to_seconds() + other.to_seconds())
     }
 }
 
