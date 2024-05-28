@@ -2,6 +2,8 @@ mod time;
 use time::Time;
 mod unit;
 use unit::Length;
+mod angle;
+use angle::Angle;
 
 
 fn main() {
@@ -48,5 +50,28 @@ fn main() {
     println!("The new length is {}", new_length);
     println!("The scalar length is {}", scalar_length);
 
+
+    /////////// Angle //////////////
+    
+    let angle1 = Angle::Revolutions(1.0);
+    let angle2 = Angle::Degrees(90.0);
+
+    println!(
+        "{} is equal to {} degrees",
+        angle1,
+        angle1.to_degrees()
+    );
+
+    println!(
+        "{} is equal to {} radians",
+        angle2,
+        angle2.to_radians()
+    );
+
+    println!(
+        "{} is equal to {} gradians",
+        angle1,
+        angle1.to_gradians()
+    );
 
 }

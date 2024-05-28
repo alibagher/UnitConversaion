@@ -1,5 +1,4 @@
 use std::fmt;
-
 use std::ops::{Add, Sub, Mul, Div};
 
 //////////////PHYSICAL DIMENSIONS/////////////////////
@@ -182,7 +181,7 @@ impl fmt::Display for Length {
 }
 
 //Dimension::Area
-#[derive( Clone, Copy)]
+#[derive(Clone, Copy)]
 pub enum Area {
     SquareMegameters(f64),
     SquareKilometers(f64),
@@ -403,8 +402,8 @@ impl fmt::Display for Volume {
     }
 }
 
-
 //OPERATIONS:
+
 // Implement Add trait
 impl Add<Length> for Length {
     type Output = Length;
@@ -527,6 +526,7 @@ impl Mul<f64> for Length {
         Length::Meters(self.to_meters() * scalar)
     }
 }
+
 impl Div<f64> for Length {
     type Output = Length;
     fn div(self, scalar: f64) -> Length {
@@ -541,6 +541,7 @@ impl Mul<f64> for Area {
         Area::SquareMeters(self.to_square_meters() * scalar)
     }
 }
+
 impl Div<f64> for Area {
     type Output = Area;
     fn div(self, scalar: f64) -> Area {
@@ -555,6 +556,7 @@ impl Mul<f64> for Volume {
         Volume::Liters(self.to_liters() * scalar)
     }
 }
+
 impl Div<f64> for Volume {
     type Output = Volume;
     fn div(self, scalar: f64) -> Volume {
