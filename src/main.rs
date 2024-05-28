@@ -1,7 +1,7 @@
 mod time; 
 use time::Time;
 mod unit;
-use unit::{Length, Unit};
+use unit::Length;
 
 
 fn main() {
@@ -32,4 +32,21 @@ fn main() {
 
     println!("The area of {} by {} is {}", length1, length2, area, );
     println!( "{} divided by {} is {}", length1, length2, dimensionless);
+
+    /////////// Area and Volume ///////////////
+    
+    let volume = area * length1;
+
+    println!("The volume of {} by {} by {} is {}", length1, length1, length2, volume);
+
+    let area = volume / length2;
+
+    let new_length = area / length1;
+
+    let scalar_length = length1 * (0.5);
+
+    println!("The new length is {}", new_length);
+    println!("The scalar length is {}", scalar_length);
+
+
 }
