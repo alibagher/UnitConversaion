@@ -1,10 +1,15 @@
 mod time; 
 use time::Time;
-mod unit;
-use unit::Length;
 mod angle;
 use angle::Angle;
+mod length;
+use length::Length;
+mod area;
+use area::Area;
+mod volume;
+use volume::Volume;
 
+mod operations;
 
 fn main() {
     ////////////////// Time ////////////////////
@@ -30,7 +35,7 @@ fn main() {
     let length1 = Length::Meters(10.0);
     let length2 = Length::Centimeters(50.0);
 
-    let area = length1 * length2;
+    let area = &length1 * &length2;
     let dimensionless = length1 / length2;
 
     println!("The area of {} by {} is {}", length1, length2, area, );

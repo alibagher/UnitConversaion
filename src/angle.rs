@@ -1,5 +1,5 @@
 use std::fmt;
-use std::ops::{Add, Sub, Mul, Div};
+use std::ops::{Add, Sub,Div};
 
 #[derive(Clone, Copy)]
 pub enum Angle {
@@ -58,4 +58,27 @@ impl Angle {
     }
 }
 
+
 //TODO: Angle Operations
+impl Add<Angle> for Angle {
+    type Output = Angle;
+    fn add(self, other: Angle) -> Angle {
+        Angle::Degrees(self.to_degrees() + other.to_degrees())
+    }
+}
+
+impl Sub<Angle> for Angle {
+    type Output = Angle;
+    fn sub(self, other: Angle) -> Angle {
+        Angle::Degrees(self.to_degrees() - other.to_degrees())
+    }
+}
+
+impl Div<Angle> for Angle {
+    type Output = f64;
+    fn div(self, other: Angle) -> f64 {
+        self.to_degrees() / other.to_degrees()
+    }
+}
+
+//TODO: Implement Degres Squared ? 
